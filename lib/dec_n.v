@@ -1,5 +1,5 @@
 module dec_n (src , z);
-  parameter n;
+  parameter n=1;
   input [n-1:0] src;
   output reg [((2**n)-1):0] z;
   integer i;
