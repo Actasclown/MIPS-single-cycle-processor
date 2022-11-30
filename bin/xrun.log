@@ -1,79 +1,67 @@
 xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	18.09-s011: Started on Nov 30, 2022 at 11:58:03 CST
+TOOL:	xrun(64)	18.09-s011: Started on Nov 30, 2022 at 17:49:38 CST
 xrun
 	-64bit
 	-access r
-	../test/slt_32_tb.v
-Recompiling... reason: file '../src/slt_32.v' is newer than expected.
-	expected: Wed Nov 30 11:57:26 2022
-	actual:   Wed Nov 30 11:58:00 2022
-file: ../test/slt_32_tb.v
-	module worklib.xor_gate:v
-		errors: 0, warnings: 0
-module xor_gate (x, y, z);
-              |
-xmvlog: *W,RECOME (./../lib/xor_gate.v,1|14): recompiling design unit worklib.xor_gate:v.
-	First compiled from line 1 of ../lib/xor_gate.v.
-(`include file: ./../lib/xor_gate.v line 1, `include file: ../src/full_adder.v line 1, `include file: ../src/add_32.v line 2, `include file: ../src/sub_32.v line 1, `include file: ../src/slt_32.v line 1, file: ../test/slt_32_tb.v line 2)
-	module worklib.xor_gate:v
-		errors: 0, warnings: 1
-module xor_gate (x, y, z);
-              |
-xmvlog: *W,RECOME (./../lib/xor_gate.v,1|14): recompiling design unit worklib.xor_gate:v.
-	First compiled from line 1 of ../lib/xor_gate.v.
-(`include file: ./../lib/xor_gate.v line 1, `include file: ../src/slt_32.v line 2, file: ../test/slt_32_tb.v line 2)
-	module worklib.xor_gate:v
-		errors: 0, warnings: 1
-	module worklib.slt_32:v
+	../test/pc_head_32_tb.v
+Recompiling... reason: file '../test/pc_head_32_tb.v' is newer than expected.
+	expected: Wed Nov 30 17:47:36 2022
+	actual:   Wed Nov 30 17:49:37 2022
+file: ../test/pc_head_32_tb.v
+	module worklib.pc_head_32_tb:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
-    sub_32 sub_32_0(
-                  |
-xmelab: *W,CUVWSP (../src/slt_32.v,14|18): 1 output port was not connected:
-xmelab: (../src/sub_32.v,5): difference
-
 	Top level design units:
-		slt_32_tb
+		pc_head_32_tb
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.xor_gate:v <0x0610b609>
-			streams:   0, words:     0
-		worklib.slt_32:v <0x037afb4e>
-			streams:   1, words:   237
+		worklib.pc_head_32_tb:v <0x66cf0a50>
+			streams:   3, words: 17038
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                  Instances  Unique
-		Modules:                201      10
-		Registers:                2       2
-		Scalar wires:           168       -
-		Expanded wires:         127       4
+		Modules:                  2       2
+		Registers:                3       3
+		Scalar wires:             1       -
+		Vectored wires:           2       -
 		Always blocks:            1       1
 		Initial blocks:           1       1
-		Cont. assignments:        2       7
 		Pseudo assignments:       2       2
 		Simulation timescale:  10ps
-	Writing initial simulation snapshot: worklib.slt_32_tb:v
-Loading snapshot worklib.slt_32_tb:v .................... Done
+	Writing initial simulation snapshot: worklib.pc_head_32_tb:v
+Loading snapshot worklib.pc_head_32_tb:v .................... Done
 xcelium> source /vol/cadence2018/XCELIUM1809/tools/xcelium/files/xmsimrc
 xcelium> run
------------------------slt_32------------------------
-         rs           rt          rd         overflow
- 2147483647           -7           0                1
--2147483648            9           1                1
-         12           -7           0                0
-         -7           12           1                0
- 2147483647            1           0                0
-          1   2147483647           1                0
-        -13       -65533           0                0
-     -65533          -13           1                0
-          2           -6           0                0
-          2            2           0                0
-         -6           -5           1                0
-         -6          -16           0                0
-------------------------------------------------------
-Simulation complete via $finish(1) at time 140 NS + 0
-../test/slt_32_tb.v:70         $finish;
+-----------------pc_head_32------------------
+addr_t: 00000000000000000000000000000001
+clk_t:   0
+new_addr_t:  00000000000000000000000000000001
+-----------------pc_head_32------------------
+addr_t: 00000000000000000000000000000001
+clk_t:   1
+new_addr_t:  00000000000000000000000000000001
+-----------------pc_head_32------------------
+addr_t: 00000000000000000000000000000001
+clk_t:   0
+new_addr_t:  00000000000000000000000000000001
+-----------------pc_head_32------------------
+addr_t: 00000000000000001111111111111111
+clk_t:   1
+new_addr_t:  00000000000000000000000000000001
+-----------------pc_head_32------------------
+addr_t: 00000000000000001111111111111111
+clk_t:   0
+new_addr_t:  00000000000000001111111111111111
+-----------------pc_head_32------------------
+addr_t: 00000000000000000000000000000001
+clk_t:   1
+new_addr_t:  00000000000000001111111111111111
+-----------------pc_head_32------------------
+addr_t: 00000000000000000000000000000001
+clk_t:   0
+new_addr_t:  00000000000000000000000000000001
+xmsim: *W,RNQUIE: Simulation is complete.
 xcelium> exit
-TOOL:	xrun(64)	18.09-s011: Exiting on Nov 30, 2022 at 11:58:03 CST  (total: 00:00:00)
+TOOL:	xrun(64)	18.09-s011: Exiting on Nov 30, 2022 at 17:49:39 CST  (total: 00:00:01)

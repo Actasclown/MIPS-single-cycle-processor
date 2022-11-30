@@ -5,4 +5,4 @@
 -64bit
 -access
 r
-../test/slt_32_tb.v
+../test/pc_head_32_tb.v
