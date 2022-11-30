@@ -1,0 +1,10 @@
+xcelium> run
+-------zero_32--------
+source               result
+fad21321                 0
+00000000                1
+00000001                0
+80000000                0
+----------------------
+Simulation complete via $finish(1) at time 70 NS + 0
+../test/zero_32_tb.v:32         $finish;

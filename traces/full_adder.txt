@@ -1,0 +1,14 @@
+xcelium> run
+-------------full_adder-------------
+a    b    carry_in    sum    carry_out
+0    0         0            0                   0
+0    0         1            1                   0
+0    1         0            1                   0
+0    1         1            0                   1
+1    0         0            1                   0
+1    0         1            0                   1
+1    1         0            0                   1
+1    1         1            1                   1
+-------------------------------------
+Simulation complete via $finish(1) at time 100 NS + 0
+../test/full_adder_tb.v:61         $finish;

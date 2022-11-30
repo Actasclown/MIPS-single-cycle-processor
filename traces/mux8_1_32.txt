@@ -1,0 +1,23 @@
+s_000 = 32'd1;
+        s_001 = 32'd2;
+        s_010 = 32'd3;
+        s_011 = 32'd4;
+        s_100 = 32'h65465666;
+        s_101 = 32'd6;
+        s_110 = 32'd7;
+        s_111 = 32'hfffffffa;
+
+xcelium> run
+----mux8_1_32-----
+select      result
+   0             1
+   1             2
+   2             3
+   3             4
+   4    1699108454
+   5             6
+   6             7
+   7            -6
+-------------------
+Simulation complete via $finish(1) at time 120 NS + 0
+../test/mux8_1_32_tb.v:64         $finish;

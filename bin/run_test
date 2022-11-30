@@ -1,0 +1,29 @@
+# cadence environment setup
+setenv CDSHOME /vol/cadence/IC615
+setenv PDK_DIR /vol/eecs391/FreePDK45
+setenv OA_HOME /vol/cadence2018/INNOVUS162/oa_v22.50.051
+setenv MMSIM_ROOT /vol/cadence2014/MMSIM141
+setenv CDS_LIC_FILE 5280@cadencelm.eecs.northwestern.edu
+setenv PATH ${PATH}:/vol/cadence/IC615/bin:$MMSIM_ROOT/tools/spectre/bin:$MMSIM_ROOT/tools/dfII/bin
+setenv CDS_Netlisting_Mode Analog 
+setenv EDIHOME /vol/cadence2014/EDI141/tools/bin
+setenv RCHOME /vol/cadence2014/RC142/bin
+setenv PATH ${PATH}:/vol/cadence2014/EDI141/tools/bin:/vol/cadence2014/RC142/bin:/vol/cadence2014/ETS131/tools/bin:/vol/cadence2014/INCISIV141/tools/spectre/etc/ahdl:/vol/cadence2018/GENUS181/bin:/vol/cadence2018/XCELIUM1809/tools/bin:/vol/cadence2018/INNOVUS162/bin
+setenv PATH ${PATH}:/vol/synopsys2010/hspice_vD-2010.03-SP2/hspice/bin
+setenv PATH ${PATH}:/vol/synopsys2012/cosmosscope_vF-2011.09/ai_bin
+setenv PYTHONPATH /vol/eecs391/FreePDK45/ncsu_basekit/techfile/cni
+setenv MGLS_LICENSE_FILE 1717@mentorlm.eecs.northwestern.edu
+setenv MGC_HOME /vol/mentor/Calibre-2011.4_35/ixl_cal_2011.4_35.27/
+
+# xrun -64bit -gui -access r ../test/full_adder_tb.v
+# xrun -64bit -access r ../test/full_adder_tb.v
+# xrun -64bit -access r ../test/add_32_tb.v
+# xrun -64bit -access r ../test/sub_32_tb.v
+# xrun -64bit -access r ../test/mux32_1_tb.v
+# xrun -64bit -access r ../test/sll_32_tb.v
+# xrun -64bit -access r ../test/srl_32_tb.v
+# xrun -64bit -access r ../test/sltu_32_tb.v
+xrun -64bit -access r ../test/slt_32_tb.v
+# xrun -64bit -access r ../test/zero_32_tb.v
+# xrun -64bit -access r ../test/mux8_1_32_tb.v
+# xrun -64bit -access r ../test/alu_32_tb.v
