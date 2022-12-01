@@ -1,4 +1,4 @@
-module sram_tb;
+module sram_tb;         // instruction mem
   
   reg t_cs;
   reg t_oe;
@@ -6,57 +6,32 @@ module sram_tb;
   reg [31:0] t_addr;
   reg [31:0] t_din;
   wire [31:0] t_dout;
+
+  parameter program_file = "data/bills_branch_program.dat";
   
-  
-  
-  sram sram_ut(.cs(t_cs) , .oe(t_oe) , .we(t_we) , .addr(t_addr) , .din(t_din) , .dout(t_dout));
-  defparam sram_ut.mem_file = "data/bills_branch.dat";
+  sram  #(.mem_file(program_file)) instruction_mem (.cs(t_cs) , .oe(t_oe) , .we(t_we) , .addr(t_addr) , .din(t_din) , .dout(t_dout));
   
   initial
     begin
-      $monitor(t_cs , t_oe , t_we , t_addr , t_din , t_dout);
       
-      t_cs = 1'b0;
+      t_cs = 1'b1;            //chip enable (should be always 1)
+      t_oe = 1'b1;            //read enalbe (should be always 1)
+      t_we = 1'b0;            //write enable (should be always 0) (can't write instruction mem)
+      
+      t_addr = 32'h00400050;  //read addr
+      t_din = 32'hFFFFFFFF;   //doesn't matter
       #10
-      
-      t_cs = 1'b1;
-      t_oe = 1'b1;
-      t_we = 1'b0;
-      t_addr = 32'h00400050;
-      t_din = 32'hFFFFFFFF;
-      
+
+      t_addr = 32'h00400050;  //read addr
       #10
-      t_cs = 1'b0;
-      t_oe = 1'b1;
-      t_we = 1'b1;
-      t_addr = 32'h0040003c;
-      t_din = 32'h0000000E;
-      
+
+      t_addr = 32'h0040003c;  //read addr
       #10
-      t_cs = 1'b1;
-      t_oe = 1'b1;
-      t_we = 1'b0;
-      t_addr = 32'h0040002c;
-      t_din = 32'hFFFFFFFF;
-      
-      #10
-      t_cs = 1'b1;
-      t_oe = 1'b0;
-      t_we = 1'b1;
-      t_addr = 32'h10000024;
-      t_din = 32'h00000007;
-      
-      #10
-      t_cs = 1'b1;
-      t_oe = 1'b1;
-      t_we = 1'b0;
-      t_addr = 32'h00400020;
-      
-      #10
-      t_cs = 1'b1;
-      t_oe = 1'b1;
-      t_we = 1'b0;
-      t_addr = 32'h10000024;
+
+      #20
+
+      $finish;
+     
       
      
   end
