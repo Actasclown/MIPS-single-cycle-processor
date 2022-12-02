@@ -1,6 +1,6 @@
-module syncram(clk,cs,oe,we,addr,din,dout);     // data mem
+module syncram(clk,cs,oe,we,addr,din,dout);
   
-  parameter mem_file = "";
+  parameter mem_file="";
   input clk;
   input cs;
   input oe;
@@ -9,13 +9,15 @@ module syncram(clk,cs,oe,we,addr,din,dout);     // data mem
   input [31:0] din;
   output reg [31:0] dout;
   
+  
   integer check_hex = 1;
   integer file;
   integer ram_size = 0; // to keep track of elements in the ram
   
+  
   integer char; // to read line by line
   integer r; 
-  integer c = 0; // index for ram writing/reading
+  integer c =0; // index for ram writing/reading
   integer i = 0; // index for hex checking
   integer initNeeded = 1;
   integer check_sram = 0;
@@ -28,6 +30,48 @@ module syncram(clk,cs,oe,we,addr,din,dout);     // data mem
   reg [31:0] dbuf;
   
   reg [31:0] mem [49:0][1:0]; // memory to hold addr and data.
+  
+  // task to check whether bits are in hex  
+  // don't need it now since fscanf gets hex value only and checks it.
+  task checkHex;
+    input [7:0] bits;
+    output integer hex;
+    begin
+    i = 0;
+    while (i<8) begin
+      case (bits[i])
+        1'h0 : hex = 1;
+        1'h1 : hex = 1;
+        1'h2 : hex = 1;
+        1'h3 : hex = 1;
+        1'h4 : hex = 1;
+        1'h5 : hex = 1;
+        1'h6 : hex = 1;
+        1'h7 : hex = 1;
+        1'h8 : hex = 1;
+        1'h9 : hex = 1;
+        1'ha : hex = 1;
+        1'hb : hex = 1;
+        1'hc : hex = 1;
+        1'hd : hex = 1;
+        1'he : hex = 1;
+        1'hf : hex = 1;
+        1'hA : hex = 1;
+        1'hB : hex = 1;
+        1'hC : hex = 1;
+        1'hD : hex = 1;
+        1'hE : hex = 1;
+        1'hF : hex = 1;
+        default : hex = 0;
+    endcase
+    if (hex==0) begin
+      $display("ERROR: Data %h is not in hex format: " , bits);
+      $finish;
+    end
+    i = i +1 ;
+    end
+   end
+  endtask
   
   
   task initiate;
@@ -118,17 +162,19 @@ module syncram(clk,cs,oe,we,addr,din,dout);     // data mem
       endtask
         
 
-  always @(negedge clk)
+  
+  
+  always @(posedge clk)
     begin
       
       if (initNeeded==1) begin
         $display("Now initializing sram");
-        initiate;
+        initiate();
         initNeeded=0;
       end
     // for debugging if the ram is initiated display its addr and word
       if ((initNeeded==0) && (check_sram==0)) begin
-        checkRAM;
+        checkRAM();
         check_sram=1;
       end
     
@@ -145,16 +191,7 @@ module syncram(clk,cs,oe,we,addr,din,dout);     // data mem
           dout = dbuf;
         end
       end
+      
    end
-
-  always @(*) begin
-    if ((initNeeded==0) && (cs==1)) begin
-      if (oe==1) begin
-          readRAM(addr , dbuf);
-          $display("Writing to dout: " , dbuf);
-          dout = dbuf;
-        end
-    end
-  end
    
 endmodule
