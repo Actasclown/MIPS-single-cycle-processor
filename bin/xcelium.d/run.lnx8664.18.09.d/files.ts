@@ -9,4 +9,6 @@
 1668192836 /home/yhi4324/CE361/alu_design/test/zero_32_tb.v
 1668198701 /home/yhi4324/CE361/alu_design/test/mux8_1_32_tb.v
 1668207416 /home/yhi4324/CE361/alu_design/test/alu_32_tb.v
-1669852177 /home/yll6162/CS361/proj_processor/MIPS-single-cycle-processor/test/pc_head_32_tb.v
+1669939834 /home/yll6162/CS361/proj_processor/MIPS-single-cycle-processor/test/pc_head_32_tb.v
+1669877147 /home/yll6162/CS361/proj_processor/MIPS-single-cycle-processor/test/signext_32_tb.v
+1669958472 /home/yll6162/CS361/proj_processor/MIPS-single-cycle-processor/test/pc_32_tb.v
