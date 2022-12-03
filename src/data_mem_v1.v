@@ -1,7 +1,6 @@
-module data_mem_v1(clk,cs,oe,we,addr,din,dout);
+module data_mem_v1(cs,oe,we,addr,din,dout);
 
   parameter mem_file="";
-  input clk;
   input cs;
   input oe;
   input we;
