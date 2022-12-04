@@ -1,139 +1,43 @@
 xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	18.09-s011: Started on Dec 01, 2022 at 23:21:14 CST
+TOOL:	xrun(64)	18.09-s011: Started on Dec 03, 2022 at 22:47:14 CST
 xrun
 	-64bit
 	-access r
-	../test/pc_32_tb.v
-Recompiling... reason: file '../test/pc_32_tb.v' is newer than expected.
-	expected: Thu Dec  1 23:16:55 2022
-	actual:   Thu Dec  1 23:21:12 2022
-file: ../test/pc_32_tb.v
-	module worklib.xor_gate:v
-		errors: 0, warnings: 0
-module xor_gate (x, y, z);
-              |
-xmvlog: *W,RECOME (./../lib/xor_gate.v,1|14): recompiling design unit worklib.xor_gate:v.
-	First compiled from line 1 of ../lib/xor_gate.v.
-(`include file: ./../lib/xor_gate.v line 1, `include file: ../src/full_adder.v line 1, `include file: ../src/add_32.v line 2, `include file: ../src/pc_32.v line 1, file: ../test/pc_32_tb.v line 2)
-	module worklib.xor_gate:v
-		errors: 0, warnings: 1
-	module worklib.and_gate:v
-		errors: 0, warnings: 0
-	module worklib.mux_32:v
-		errors: 0, warnings: 0
-module mux_32 (sel, src0, src1, z);
-            |
-xmvlog: *W,RECOME (./../lib/mux_32.v,1|12): recompiling design unit worklib.mux_32:v.
-	First compiled from line 1 of ../lib/mux_32.v.
-(`include file: ./../lib/mux_32.v line 1, `include file: ../src/pc_head_32.v line 2, `include file: ../src/pc_32.v line 3, file: ../test/pc_32_tb.v line 2)
-	module worklib.mux_32:v
-		errors: 0, warnings: 1
-module and_gate (x, y, z);
-              |
-xmvlog: *W,RECOME (./../lib/and_gate.v,1|14): recompiling design unit worklib.and_gate:v.
-	First compiled from line 1 of ../lib/and_gate.v.
-(`include file: ./../lib/and_gate.v line 1, `include file: ../src/pc_32.v line 5, file: ../test/pc_32_tb.v line 2)
-	module worklib.and_gate:v
-		errors: 0, warnings: 1
-	module worklib.pc_32_tb:v
+	../test/signext_32_tb.v
+Recompiling... reason: file '../test/signext_32_tb.v' is newer than expected.
+	expected: Sat Dec  3 22:45:39 2022
+	actual:   Sat Dec  3 22:47:12 2022
+file: ../test/signext_32_tb.v
+	module worklib.signext_32_tb:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
-add_32 add_32_0(
-              |
-xmelab: *W,CUVWSP (../src/pc_32.v,41|14): 1 output port was not connected:
-xmelab: (../src/add_32.v,4): overflow
-
-add_32 add_32_1(
-              |
-xmelab: *W,CUVWSP (../src/pc_32.v,54|14): 1 output port was not connected:
-xmelab: (../src/add_32.v,4): overflow
-
 	Top level design units:
-		pc_32_tb
+		signext_32_tb
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.mux_32:v <0x052c57fb>
-			streams:   2, words:   633
-		worklib.and_gate:v <0x748ab842>
-			streams:   0, words:     0
-		worklib.xor_gate:v <0x0610b609>
-			streams:   0, words:     0
-		worklib.mux_32:v <0x69bd137c>
-			streams:   2, words:   511
-		worklib.pc_32_tb:v <0x3a4f8740>
-			streams:   7, words: 32936
+		worklib.signext_32_tb:v <0x047e7aac>
+			streams:   2, words:  3201
 	Building instance specific data structures.
-    .x(barnch),
-            |
-xmelab: *W,CSINFI (../src/pc_32.v,70|12): implicit wire has no fanin (pc_32_tb.pc_32_0.barnch).
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                  Instances  Unique
-		Modules:                395      10
-		Registers:                9       8
-		Scalar wires:           334       -
-		Expanded wires:          96       3
-		Vectored wires:           6       -
-		Always blocks:            4       3
+		Modules:                  2       2
+		Registers:                1       1
+		Vectored wires:           2       -
 		Initial blocks:           1       1
-		Cont. assignments:        2       6
-		Pseudo assignments:       9       9
+		Cont. assignments:        1       1
+		Pseudo assignments:       1       1
 		Simulation timescale:  10ps
-	Writing initial simulation snapshot: worklib.pc_32_tb:v
-Loading snapshot worklib.pc_32_tb:v .................... Done
+	Writing initial simulation snapshot: worklib.signext_32_tb:v
+Loading snapshot worklib.signext_32_tb:v .................... Done
 xcelium> source /vol/cadence2018/XCELIUM1809/tools/xcelium/files/xmsimrc
 xcelium> run
------------------pc_32 reset------------------
-clk_t:   0
-reset_t:  0
-branch_t:  0
-jump_t:  0
-zero_t:  0
-instruction_t:  00000000
-addr_t: 00400020
------------------pc_32 pc + 4------------------
-clk_t:   0
-reset_t:  0
-branch_t:  0
-jump_t:  0
-zero_t:  0
-instruction_t:  00000000
-addr_t: 00400024
------------------pc_32 pc + 4------------------
-clk_t:   0
-reset_t:  0
-branch_t:  0
-jump_t:  0
-zero_t:  0
-instruction_t:  00000000
-addr_t: 00400028
------------------pc_32 branch------------------
-clk_t:   0
-reset_t:  0
-branch_t:  1
-jump_t:  0
-zero_t:  1
-instruction_t:  00001000
-addr_t in hex: 0040102c
-addr_t in binary: 00000000010000000001000000101100
------------------pc_32 jump------------------
-clk_t:   0
-reset_t:  0
-branch_t:  x
-jump_t:  1
-zero_t:  x
-instruction_t:  00080000
-addr_t hex: 00200000
-addr_t binary: 00000000001000000000000000000000
------------------pc_32 pc + 4------------------
-clk_t:   0
-reset_t:  0
-branch_t:  0
-jump_t:  0
-zero_t:  0
-instruction_t:  00450000
-addr_t: 00200004
-xmsim: *W,RNQUIE: Simulation is complete.
+imm:   1111000100010001
+extended:   11111111111111111111000100010001
+imm:   0000000000000000
+extended:   00000000000000000000000000000000
+Simulation complete via $finish(1) at time 20 NS + 0
+../test/signext_32_tb.v:26         $finish;
 xcelium> exit
-TOOL:	xrun(64)	18.09-s011: Exiting on Dec 01, 2022 at 23:21:14 CST  (total: 00:00:00)
+TOOL:	xrun(64)	18.09-s011: Exiting on Dec 03, 2022 at 22:47:14 CST  (total: 00:00:00)

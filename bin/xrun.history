@@ -329,3 +329,5 @@ s328(01Dec2022:23:15:20):  xrun -64bit -access r ../test/pc_32_tb.v
 s329(01Dec2022:23:16:00):  xrun -64bit -access r ../test/pc_32_tb.v 
 s330(01Dec2022:23:17:01):  xrun -64bit -access r ../test/pc_32_tb.v 
 s331(01Dec2022:23:21:14):  xrun -64bit -access r ../test/pc_32_tb.v 
+s332(03Dec2022:22:46:41):  xrun -64bit -access r ../test/signext_32_tb.v 
+s333(03Dec2022:22:47:14):  xrun -64bit -access r ../test/signext_32_tb.v 
