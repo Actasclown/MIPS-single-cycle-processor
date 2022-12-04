@@ -1,31 +1,34 @@
 module inst_mem_tb;         // instruction mem
-  
-  reg t_cs;
-  reg t_oe;
-  reg t_we;
-  reg [31:0] t_addr;
-  reg [31:0] t_din;
-  wire [31:0] t_dout;
+
+  reg [31:0] Adr;
+
+  wire [5:0] opcode;
+  wire [4:0] Rs;
+  wire [4:0] Rt;
+  wire [4:0] Rd;
+  wire [4:0] shamt;
+  wire [5:0] func;
+  wire [15:0] imm16;
+  wire [31:0] dout1, dout2;
 
   parameter program_file = "data/bills_branch.dat";
   
-  inst_mem  #(.mem_file(program_file)) instruction_mem (.cs(t_cs) , .oe(t_oe) , .we(t_we) , .addr(t_addr) , .din(t_din) , .dout(t_dout));
+  inst_mem  #(.mem_file(program_file)) instruction_mem (.Adr(Adr), .opcode(opcode), .Rs(Rs), .Rt(Rt), .Rd(Rd), .shamt(shamt), .func(func), .imm16(imm16));
   
+  assign dout1 = {opcode,Rs,Rt,Rd,shamt,func};
+  assign dout2 = {opcode,Rs,Rt,imm16};
+
   initial
     begin
       
-      t_cs = 1'b1;            //chip enable (should be always 1)
-      t_oe = 1'b1;            //read enalbe (should be always 1)
-      t_we = 1'b0;            //write enable (should be always 0) (can't write instruction mem)
-      
-      t_addr = 32'h00400050;  //read addr
-      t_din = 32'hFFFFFFFF;   //doesn't matter
+      Adr = 32'h00400050;  //read addr
+     
       #10
 
-      t_addr = 32'h00400050;  //read addr
+      Adr = 32'h00400050;  //read addr
       #10
 
-      t_addr = 32'h0040003c;  //read addr
+      Adr = 32'h0040003c;  //read addr
       #10
 
       #20

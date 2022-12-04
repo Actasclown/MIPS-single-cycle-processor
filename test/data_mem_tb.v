@@ -1,56 +1,55 @@
 module data_mem_tb;  //data_mem
   
   reg clk;
-  reg t_cs;
-  reg t_oe;
-  reg t_we;
-  reg [31:0] t_addr;
-  reg [31:0] t_din;
-  wire [31:0] t_dout;
+  reg output_en;
+  reg MemWr;
+  reg [31:0] address;
+  reg [31:0] data_in;
+  wire [31:0] data_out;
   
   parameter data_file = "data/bills_branch.dat";
   parameter clk_p = 10;     // clk period
   
-  data_mem #(.mem_file(data_file)) data_cache(.clk(clk) , .cs(t_cs) , .oe(t_oe) , .we(t_we) , .addr(t_addr) , .din(t_din) , .dout(t_dout));
+  data_mem #(.mem_file(data_file)) data_cache(.clk(clk), .output_en(output_en) , .MemWr(MemWr) , .address(address) , .data_in(data_in) , .data_out(data_out));
  
   initial clk = 1'b1;
   always #(clk_p/2) clk = ~clk;
   
   initial
     begin
-      t_cs <= 1'b1;    //always on
-      t_we <= 1'b0;
-      t_oe <= 1'b1;    //always on
-      t_addr <= 32'h00000000;
-      t_din <= 32'h00000000;
+
+      MemWr <= 1'b0;
+      output_en <= 1'b1;    //always on
+      address <= 32'h00000000;
+      data_in <= 32'h00000000;
       #clk_p
       // initialization is done; start reading
 
-      t_addr <= 32'h1000000c;
+      address <= 32'h1000000c;
       #clk_p
 
-      t_addr <= 32'h10000024;
+      address <= 32'h10000024;
       #clk_p
 
-      t_addr <= 32'h10000000;
+      address <= 32'h10000000;
       #clk_p
 
       //start writing
-      t_we <=1'b1;
-      t_addr <= 32'h10000028;
-      t_din <= 32'h0000FF28;
+      MemWr <=1'b1;
+      address <= 32'h10000028;
+      data_in <= 32'h0000FF28;
       #clk_p
 
-      t_addr <= 32'h10000024;
-      t_din <= 32'h0000FF24;
+      address <= 32'h10000024;
+      data_in <= 32'h0000FF24;
       #clk_p
 
       //stop writing
-      t_we <=1'b0;
-      t_addr <= 32'h1000000c;
+      MemWr <=1'b0;
+      address <= 32'h1000000c;
       #clk_p
 
-      t_addr <= 32'h10000028;
+      address <= 32'h10000028;
       #clk_p
 
       #(clk_p*5)
