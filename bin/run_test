@@ -28,4 +28,5 @@ setenv MGC_HOME /vol/mentor/Calibre-2011.4_35/ixl_cal_2011.4_35.27/
 # xrun -64bit -access r ../test/mux8_1_32_tb.v
 # xrun -64bit -access r ../test/alu_32_tb.v
 # xrun -64bit -access r ../test/control_unit_tb.v
-xrun -64bit -access r ../test/alu_32_control_tb.v
+# xrun -64bit -access r ../test/alu_32_control_tb.v
+ xrun -64bit -access r ../src/single_cycle_processor.v

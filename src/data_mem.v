@@ -1,3 +1,5 @@
+`include "../lib/syncram.v"
+
 module data_mem(clk,output_en,MemWr,address,data_in,data_out);
 
   parameter mem_file="";

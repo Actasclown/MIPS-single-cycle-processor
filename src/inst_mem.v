@@ -1,3 +1,5 @@
+`include "../lib/sram.v"
+
 module inst_mem(Adr,opcode,Rs,Rt,Rd,shamt,func,imm16);
 
   parameter mem_file = "";

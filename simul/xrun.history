@@ -1,0 +1,8 @@
+s1(04Dec2022:14:14:15):  xrun -64bit -gui -access r ../src/single_cycle_processor.v 
+s2(04Dec2022:14:22:04):  xrun -64bit -gui -access r ../src/single_cycle_processor.v 
+s3(04Dec2022:14:24:23):  xrun -64bit -gui -access r ../src/single_cycle_processor.v 
+s4(04Dec2022:14:30:04):  xrun -64bit -gui -access r ../src/single_cycle_processor.v "-s " 
+s5(04Dec2022:14:54:08):  xrun -64bit -gui -access r ../src/single_cycle_processor.v 
+s6(04Dec2022:15:20:35):  xrun -64bit -gui -access r ../src/single_cycle_processor.v "-s " 
+s7(04Dec2022:16:02:36):  xrun -64bit -gui -access r ../src/single_cycle_processor.v 
+s8(04Dec2022:16:03:55):  xrun -64bit -gui -access r ../src/single_cycle_processor.v "-s " 

@@ -17,23 +17,36 @@
 `include "../src/mux_32.v"
 
 
-module single_cycle_processor;
+module single_cycle_processor();
 
     wire [31:0] addr_inst;
-    wire [5:0]  opcode;
-    wire [4:0]  Rs;
+    wire [5:0]  opcode; 
+    wire [4:0]  Rs; 
     wire [4:0]  Rt;
     wire [4:0]  Rd;
     wire [4:0]  shamt;
     wire [5:0]  func;
     wire [15:0] imm16;
     wire        branch;
+    wire [31:0] inst_i;
 
-    reg         clk_inst_reg = 1'b0;
-    reg         rst_inst_reg;
-    reg         clk_data = 1'b0;
+    wire [31:0] busA, busB, busW;
+    
 
-    inst_mem inst_mem_0(
+
+    assign inst_i = {opcode, Rs, Rt, imm16};
+
+
+    // reg         clk_inst_reg = 1'b0;
+    // reg         rst_inst_reg;
+    // reg         clk_data = 1'b0;
+
+    reg clk;
+    reg rstb;
+
+    parameter  mem_file = "../data/unsigned_sum.dat";
+
+    inst_mem #(.mem_file(mem_file)) inst_mem_0(
         .Adr        (addr_inst),
         .opcode     (opcode),
         .Rs         (Rs),
@@ -49,9 +62,11 @@ module single_cycle_processor;
         .zero       (branch),
         .addr       (addr_inst),
         .jump       (1'b0),
-        .clk        (clk_inst_reg),
-        .reset      (rst_inst_reg),
-        .instruction(imm16)
+        // .clk        (clk_inst_reg),
+        .clk        (clk),
+        // .reset      (rst_inst_reg),
+        .reset      (rstb),
+        .instruction(inst_i)
     );
 
     wire        RegDst;
@@ -97,7 +112,7 @@ module single_cycle_processor;
 
     wire [31:0] imm16_out_signex;
     wire [31:0] z_MUX_ALUSrc;
-    signext_32 signext_32_0(.imm16(imm16), .out(imm16_out_signex));
+    signext_32 signext_32_0(.imm(imm16), .extended(imm16_out_signex));
     mux_32 mux_ALUsrc(.sel(ALUSrc), .src0(busB), .src1(imm16_out_signex), .z(z_MUX_ALUSrc));
 
     alu_32 alu_32_0(
@@ -117,14 +132,19 @@ module single_cycle_processor;
         .ALUCtr     (ALUCtr)
     );
 
+
+    
+
     register_file register_file_0(
-        .clk        (clk_inst_reg),
-        .rstb       (rst_inst_reg),
+        // .clk        (clk_inst_reg),
+        .clk        (clk),
+        // .rstb       (rst_inst_reg),
+        .rstb       (rstb),
         .RegWr      (RegWrite),
         .RegDst     (RegDst),
-        .Rw         (Rd),
-        .Ra         (Rs),
-        .Rb         (Rt),
+        .Rd         (Rd),
+        .Rs         (Rs),
+        .Rt         (Rt),
         .busW       (busW),
         .busA       (busA),
         .busB       (busB)
@@ -132,8 +152,9 @@ module single_cycle_processor;
 
     wire [31:0] MEM_out;
 
-    data_mem data_mem_0(
-        .clk        (clk_data),
+    data_mem #(.mem_file(mem_file)) data_mem_0(
+        // .clk        (clk_data),
+        .clk        (clk),
         .output_en  (MemRead),
         .MemWr      (MemWrite),
         .address    (ALU_out),
@@ -141,6 +162,25 @@ module single_cycle_processor;
         .data_out   (MEM_out)
     );
     mux_32 mux_mem_to_reg(.sel(MemToReg), .src0(ALU_out), .src1(MEM_out), .z(busW));
+
+
+
+    // test_bench
+
+    initial clk = 1'b1;
+    always #5 clk = ~clk;
+
+    initial begin
+        rstb <= 1'b1;
+        #1
+        rstb <= 1'b0;
+        #10
+        rstb <= 1'b1;
+
+
+        #1000;
+        $finish;
+    end 
 
 
 endmodule

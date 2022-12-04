@@ -1,0 +1,3 @@
+source /vol/ece303/genus_tutorial/cadence.env
+
+xrun -64bit -gui -access r ../src/single_cycle_processor.v

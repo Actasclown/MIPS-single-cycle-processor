@@ -47,7 +47,7 @@ add_32 add_32_0(
 );
 
 signext_32 signext_32_0(
-    .imm(instruction[15:0]),
+    .imm({instruction[13:0],2'b00}),
     .extended(w3)
 );
 
