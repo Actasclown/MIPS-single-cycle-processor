@@ -44,7 +44,7 @@ module single_cycle_processor();
     reg clk;
     reg rstb;
 
-    parameter  mem_file = "../data/unsigned_sum.dat";
+    parameter  mem_file = "../data/sort_corrected_branch.dat";
 
     inst_mem #(.mem_file(mem_file)) inst_mem_0(
         .Adr        (addr_inst),
@@ -178,7 +178,7 @@ module single_cycle_processor();
         rstb <= 1'b1;
 
 
-        #1000;
+        #10000;
         $finish;
     end 
 
