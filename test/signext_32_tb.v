@@ -13,7 +13,12 @@ module signext_32_tb;
 
     initial begin
 
-        imm_t = 16'h1111;
+        imm_t = 16'hf111;
+        #10
+        $display("imm:   %b", imm_t);
+        $display("extended:   %b", extended_t);
+
+        imm_t = 16'h0000;
         #10
         $display("imm:   %b", imm_t);
         $display("extended:   %b", extended_t);
