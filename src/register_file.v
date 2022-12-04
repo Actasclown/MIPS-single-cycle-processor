@@ -1,15 +1,20 @@
-module register_file (clk, rstb, RegWr, Rw, Ra, Rb, busW, busA, busB);
+module register_file (clk, rstb, RegWr, RegDst, Rs, Rt, Rd, busW, busA, busB);
 
 input clk, rstb;
 input RegWr;                // write_enable; 1-> enable
-input [4:0] Rw, Ra, Rb;     // addr for write, read_a, read_b
+input RegDst;               // 1: Rw = Rd;   0:Rt
+input [4:0] Rs, Rt, Rd;    
 input [31:0] busW;          // data_in
 output [31:0] busA, busB;   // data_out
 
 reg [31:0] mem [0:31];      // 	reg [wordsize-1:0] array_name [0:arraysize-1]
 
-assign busA = mem[Ra];
-assign busB = mem[Rb];
+wire [4:0] Rw;              // addr for write
+
+assign Rw = RegDst? Rd: Rt;
+
+assign busA = mem[Rs];
+assign busB = mem[Rt];
 
 always @(negedge clk or negedge rstb) begin
   if(~rstb) begin
