@@ -82,7 +82,7 @@ module pc_32_tb;
         clk_t = 1'b0;
         #10
 
-        $display("-----------------pc_32 branch------------------");
+        $display("-----------------pc_32 branch +positive------------------");
         $display("clk_t:   %b", clk_t);
         $display("reset_t:  %b", reset_t);
         $display("branch_t:  %b", branch_t);
@@ -90,44 +90,63 @@ module pc_32_tb;
         $display("zero_t:  %b", zero_t);
         $display("instruction_t:  %h", instruction_t);
         $display("addr_t in hex: %h", addr_t);
-         $display("addr_t in binary: %b", addr_t);
+        $display("addr_t in binary: %b", addr_t);
 
-        branch_t = 1'bx;
-        zero_t = 1'bx;
-        jump_t = 1'b1;
-        instruction_t = 32'b0000_0000_0000_1000_0000_0000_0000_0000;
+
+        branch_t = 1'b1;
+        zero_t = 1'b1;
+        instruction_t = 32'h0000_ff98;
         clk_t = 1'b1;
         #10
         clk_t = 1'b0;
         #10
 
-        $display("-----------------pc_32 jump------------------");
+        $display("-----------------pc_32 branch +negative------------------");
         $display("clk_t:   %b", clk_t);
         $display("reset_t:  %b", reset_t);
         $display("branch_t:  %b", branch_t);
         $display("jump_t:  %b", jump_t);
         $display("zero_t:  %b", zero_t);
         $display("instruction_t:  %h", instruction_t);
-        $display("addr_t hex: %h", addr_t);
-        $display("addr_t binary: %b", addr_t);
+        $display("addr_t in hex: %h", addr_t);
+        $display("addr_t in binary: %b", addr_t);
 
-        branch_t = 1'b0;
-        zero_t = 1'b0;
-        jump_t = 1'b0;
-        instruction_t = 32'h00450000;
-        clk_t = 1'b1;
-        #10
-        clk_t = 1'b0;
-        #10
+        // branch_t = 1'bx;
+        // zero_t = 1'bx;
+        // jump_t = 1'b1;
+        // instruction_t = 32'b0000_0000_0000_1000_0000_0000_0000_0000;
+        // clk_t = 1'b1;
+        // #10
+        // clk_t = 1'b0;
+        // #10
 
-        $display("-----------------pc_32 pc + 4------------------");
-        $display("clk_t:   %b", clk_t);
-        $display("reset_t:  %b", reset_t);
-        $display("branch_t:  %b", branch_t);
-        $display("jump_t:  %b", jump_t);
-        $display("zero_t:  %b", zero_t);
-        $display("instruction_t:  %h", instruction_t);
-        $display("addr_t: %h", addr_t);
+        // $display("-----------------pc_32 jump------------------");
+        // $display("clk_t:   %b", clk_t);
+        // $display("reset_t:  %b", reset_t);
+        // $display("branch_t:  %b", branch_t);
+        // $display("jump_t:  %b", jump_t);
+        // $display("zero_t:  %b", zero_t);
+        // $display("instruction_t:  %h", instruction_t);
+        // $display("addr_t hex: %h", addr_t);
+        // $display("addr_t binary: %b", addr_t);
+
+        // branch_t = 1'b0;
+        // zero_t = 1'b0;
+        // jump_t = 1'b0;
+        // instruction_t = 32'h00450000;
+        // clk_t = 1'b1;
+        // #10
+        // clk_t = 1'b0;
+        // #10
+
+        // $display("-----------------pc_32 pc + 4------------------");
+        // $display("clk_t:   %b", clk_t);
+        // $display("reset_t:  %b", reset_t);
+        // $display("branch_t:  %b", branch_t);
+        // $display("jump_t:  %b", jump_t);
+        // $display("zero_t:  %b", zero_t);
+        // $display("instruction_t:  %h", instruction_t);
+        // $display("addr_t: %h", addr_t);
 
     end
 

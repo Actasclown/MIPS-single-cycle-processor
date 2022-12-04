@@ -5,4 +5,4 @@
 -64bit
 -access
 r
-../test/signext_32_tb.v
+../test/pc_32_tb.v

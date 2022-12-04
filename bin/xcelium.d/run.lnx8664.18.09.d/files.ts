@@ -1,6 +1,6 @@
 1670116633 /home/yhi4324/CE361/alu_design/test/full_adder_tb.v
 1670116633 /home/yhi4324/CE361/alu_design/test/add_32_tb.v
-1670116633 /home/yhi4324/CE361/alu_design/test/sub_32_tb.v
+1670148429 /home/yhi4324/CE361/alu_design/test/sub_32_tb.v
 1670116633 /home/yhi4324/CE361/alu_design/test/mux32_1_tb.v
 1670116633 /home/yhi4324/CE361/alu_design/test/sll_32_tb.v
 1670116633 /home/yhi4324/CE361/alu_design/test/srl_32_tb.v
@@ -10,5 +10,6 @@
 1670116633 /home/yhi4324/CE361/alu_design/test/mux8_1_32_tb.v
 1670116633 /home/yhi4324/CE361/alu_design/test/alu_32_tb.v
 1669939834 /home/yll6162/CS361/proj_processor/MIPS-single-cycle-processor/test/pc_head_32_tb.v
-1670129232 /home/yll6162/CS361/proj_processor/MIPS-single-cycle-processor/test/signext_32_tb.v
-1669958510 /home/yll6162/CS361/proj_processor/MIPS-single-cycle-processor/test/pc_32_tb.v
+1670148042 /home/yll6162/CS361/proj_processor/MIPS-single-cycle-processor/test/signext_32_tb.v
+1670149180 /home/yll6162/CS361/proj_processor/MIPS-single-cycle-processor/test/pc_32_tb.v
+1670140877 /home/yll6162/CS361/proj_processor/MIPS-single-cycle-processor/test/next_address_logic_tb.v

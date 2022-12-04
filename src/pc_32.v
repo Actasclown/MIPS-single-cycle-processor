@@ -40,7 +40,7 @@ mux_32 mux_32_0 (
 
 add_32 add_32_0(
     .a(w1),
-    .b({29'b0, 3'b100}),
+    .b(32'h00000004),
     .sum(w2),
     .carry_in(1'b0),
     .carry_out(w7)
