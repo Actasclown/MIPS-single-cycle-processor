@@ -3,6 +3,7 @@
 1668207416 /home/yhi4324/CE361/alu_design/test/alu_32_tb.v
 1668184561 /home/yhi4324/CE361/alu_design/test/slt_32_tb.v
 1668202093 /home/yhi4324/CE361/alu_design/test/alu_tb.v
+1670206728 /home/yll6162/CS361/proj_processor/final/MIPS-single-cycle-processor/test/pc_32_tb.v
 1668151952 /home/yhi4324/CE361/alu_design/test/sll_32_tb.v
 1667952416 /home/yhi4324/CE361/alu_design/test/alu_conv_test.v
 1668134204 /home/yhi4324/CE361/alu_design/test/add_32_tb.v
@@ -10,5 +11,6 @@
 1668156004 /home/yhi4324/CE361/alu_design/test/sltu_32_tb.v
 1668152350 /home/yhi4324/CE361/alu_design/test/srl_32_tb.v
 1668198701 /home/yhi4324/CE361/alu_design/test/mux8_1_32_tb.v
+1670206288 /home/yll6162/CS361/proj_processor/final/MIPS-single-cycle-processor/test/pc_head_32_tb.v
 1668142985 /home/yhi4324/CE361/alu_design/test/sub_32_tb.v
 1668148924 /home/yhi4324/CE361/alu_design/test/mux32_1_tb.v

@@ -7,3 +7,4 @@
 -access
 r
 ../src/single_cycle_processor.v
+-s

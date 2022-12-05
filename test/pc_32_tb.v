@@ -37,6 +37,7 @@ module pc_32_tb;
         clk_t = 1'b1;
         clk_t = 1'b0;
         #10
+        reset_t = 1'b1;
         $display("-----------------pc_32 reset------------------");
         
         $display("clk_t:   %b", clk_t);
